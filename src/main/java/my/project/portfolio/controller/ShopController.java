@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import my.project.portfolio.entity.Product;
 import my.project.portfolio.service.ServiceShop;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,10 @@ public class ShopController {
     @GetMapping
     public List<Product> findAllProduct () {
         return serviceShop.findAll();
+    }
+    @GetMapping("/{id}")
+    public Product finById (@PathVariable Long id) {
+        return serviceShop.findById(id);
     }
 
 }
