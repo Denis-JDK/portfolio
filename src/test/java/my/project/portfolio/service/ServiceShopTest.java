@@ -30,4 +30,6 @@ class ServiceShopTest {
                 HttpMethod.GET, null, String.class);
         Assertions.assertThat(actual.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
+
+
 }
