@@ -25,4 +25,8 @@ public class ServiceShop {
     public Product findById(Long id) {
         return shopRepositoryProduct.findById(id).stream().findFirst().orElseThrow();
     }
+
+    public Product create(Product product) {
+       return shopRepositoryProduct.save(product);
+    }
 }
