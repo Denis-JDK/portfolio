@@ -1,14 +1,23 @@
 package my.project.portfolio.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 @Table(name = "product", schema = "shop")
 @Data
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Product {
+//    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+//    private UUID id;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +36,10 @@ public class Product {
     @Column(name = "price")
     private BigDecimal price;
 
+//    @PrePersist
+//    public void init() {
+//        if (this.id==null) {
+//            this.id = UUID.randomUUID();
+//        }
+//    }
 }

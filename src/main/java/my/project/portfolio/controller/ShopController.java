@@ -1,6 +1,7 @@
 package my.project.portfolio.controller;
 
 import lombok.AllArgsConstructor;
+import my.project.portfolio.dto.ProductDto;
 import my.project.portfolio.entity.Product;
 import my.project.portfolio.service.ServiceShop;
 import org.springframework.http.HttpStatus;
@@ -17,18 +18,19 @@ public class ShopController {
   private ServiceShop serviceShop;
 
     @GetMapping
-    public ResponseEntity<List<Product>> findAllProduct () {
+    public ResponseEntity<List<ProductDto>> findAllProduct () {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(serviceShop.findAll());
     }
 
     @GetMapping("/{id}")
-    public Product finById (@PathVariable Long id) {
+    public ProductDto finById (@PathVariable Long id) {
         return serviceShop.findById(id);
     }
 
     @PostMapping
-    public ResponseEntity<Product> create(@RequestBody Product product) { //@RequestBody указывает что обьект firstDto находится в теле запроса, конвертирует из json в java обьект
+    public ResponseEntity<ProductDto> create(@RequestBody ProductDto product) { //@RequestBody указывает что обьект firstDto находится в теле запроса, конвертирует из json в java обьект
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceShop.create(product)); //ResponseEntity.status(HttpStatus.CREATED) сделали костомный код ответа не просто 200, а 201 CREATE
     }
+
 
 }
